@@ -88,6 +88,7 @@ const teacherSchema = new mongoose.Schema({
 });
 const userSchema = new mongoose.Schema({
 
+  parentEmail:String,
   email: String,
   parentEmail:String,
   password: String,
