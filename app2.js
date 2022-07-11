@@ -581,7 +581,7 @@ app.post("/signup", function(req, res) {
                    gender: req.body.gender,
                    contact: req.body.cnumber,
                    city: req.body.city,
-                   studentID:m,
+                   studentID:m+1,
                    parentEmail:req.body.parent-email,
                    flag: 0,
                    thought:x,
