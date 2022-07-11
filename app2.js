@@ -558,7 +558,11 @@ app.post("/signup", function(req, res) {
       console.log(req.body.gender);
       console.log(req.body.cnumber);
       console.log(req.body.city);
-
+      var m=4000;
+      User.find().sort('-studentID').exec((err,doc)=>{
+        m=doc[0].studentID;
+        console.log(m);
+      })
       User.findOne({
       username: req.body.email
           }, function(err, found) {
@@ -568,16 +572,17 @@ app.post("/signup", function(req, res) {
                 res.sendFile(__dirname+"/signup1.html")
               }
                else {
-
                  User.register({
                    username: req.body.email,
-	           email:req.body.email,
+	                 email:req.body.email,
                    fname: req.body.fname,
                    lname: req.body.lname,
                    dob: req.body.dob,
                    gender: req.body.gender,
                    contact: req.body.cnumber,
                    city: req.body.city,
+                   studentID:m,
+                   parentEmail:req.body.parent-email,
                    flag: 0,
                    thought:x,
                  }, req.body.password, function(err, user) {
